@@ -1,6 +1,7 @@
 import 'package:fekra/screens/drawer/about_us_screen.dart';
 import 'package:fekra/screens/drawer/contact_us_screen.dart';
 import 'package:fekra/screens/drawer/privacy_policy_screen.dart';
+import 'package:fekra/screens/web_view_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -113,38 +114,55 @@ class AppDrawer extends StatelessWidget {
           ),
 
           // ===== Social Media =====
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _SocialIcon(
-                  icon: FontAwesomeIcons.whatsapp,
-                  url: 'https://wa.me/201080441846',
-                ),
-                _SocialIcon(
-                  icon: Icons.telegram,
-                  url: 'https://t.me/+8zZqdWcJT744NTA0',
-                ),
-                _SocialIcon(
-                  icon: FontAwesomeIcons.youtube,
-                  url: 'https://youtube.com/@fekraaquadrat?si=9BVJ2W75ffxo3WtY',
-                ),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _SocialIcon(
+                icon: FontAwesomeIcons.whatsapp,
+                url: 'https://wa.me/201080441846',
+              ),
+              _SocialIcon(
+                icon: Icons.telegram,
+                url: 'https://t.me/+8zZqdWcJT744NTA0',
+              ),
+              _SocialIcon(
+                icon: FontAwesomeIcons.youtube,
+                url: 'https://youtube.com/@fekraaquadrat?si=9BVJ2W75ffxo3WtY',
+              ),
+            ],
           ),
 
           // ===== Footer =====
           Padding(
             padding: const EdgeInsets.only(bottom: 16),
             child: Column(
-              children: const [
-                Text(
+              children: [
+                // delete acount
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => WebViewScreen(
+                          initialUrl: 'https://fiekraah.com/delete-account/',
+                          'حذف الحساب',
+                        ),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'حذف الحساب',
+                    style: TextStyle(
+                      color: Colors.red,
+                      
+                    ),
+                  ),
+                ),
+                const Text(
                   'إصدار التطبيق 1.0.0',
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
-                SizedBox(height: 4),
-                Text(
+                const SizedBox(height: 4),
+                const Text(
                   '© 2025 منصة فكرة التعليمية',
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
